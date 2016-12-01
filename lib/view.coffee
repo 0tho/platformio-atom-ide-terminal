@@ -253,7 +253,10 @@ class PlatformIOTerminalView extends View
     return if @animating
 
     if @panel.isVisible()
-      @hide()
+      if @terminal.cursorState
+        @hide()
+      else
+        @terminal.focus()
     else
       @open()
 
